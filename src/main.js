@@ -168,7 +168,6 @@ class Dashboard extends Component {
   }
 
   onRender() {
-    console.log('onrender', this.loaded)
     this.$listen('#search', 'submit', e => {
       e.preventDefault()
       this.setAttribute('coin', this.$('#coinId').value)
