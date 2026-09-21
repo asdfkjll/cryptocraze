@@ -1,6 +1,6 @@
 import './style.css'
 import dashboardStyles from './dashboard.css?inline'
-import { html, css, Component } from './pureui'
+import { html, css, Component } from './pureui.js'
 
 async function getCoinInfo(coin) {
   try {
@@ -135,6 +135,7 @@ class Dashboard extends Component {
     this.loaded = false
     this.setState({})
 
+    /*
     const keyName = `${this.state.coin}-data`
     const storage = localStorage.getItem(keyName)
 
@@ -157,6 +158,14 @@ class Dashboard extends Component {
         }
       })
     }
+    */
+
+    getCoinInfo(this.state.coin).then(response => {
+      if (response) {
+        this.loaded = true
+        this.setState(response)
+      }
+    })
   }
 
   beforeMount() {
