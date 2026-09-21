@@ -96,4 +96,4 @@
       </main>
     `}template(){return t`
       ${this.loaded?`${this.dashboardTemplate()}`:`${this.loadingTemplate()}`}
-    `}loadCoinState(){this.loaded=!1,this.setState({});let e=`${this.state.coin}-data`,t=localStorage.getItem(e);if(t)try{console.log(`loading from local`);let e=JSON.parse(t);this.loaded=!0,this.setState(e)}catch(e){console.log(e)}else console.log(`loading from API`),i(this.state.coin).then(t=>{t&&(this.loaded=!0,this.setState(t),localStorage.setItem(e,JSON.stringify(t)))})}beforeMount(){this.loadCoinState()}onChange(){this.loadCoinState()}onRender(){this.$listen(`#search`,`submit`,e=>{e.preventDefault(),this.setAttribute(`coin`,this.$(`#coinId`).value)})}};customElements.define(`my-dashboard`,a);
+    `}loadCoinState(){this.loaded=!1,this.setState({}),i(this.state.coin).then(e=>{e&&(this.loaded=!0,this.setState(e))})}beforeMount(){this.loadCoinState()}onChange(){this.loadCoinState()}onRender(){this.$listen(`#search`,`submit`,e=>{e.preventDefault(),this.setAttribute(`coin`,this.$(`#coinId`).value)})}};customElements.define(`my-dashboard`,a);
